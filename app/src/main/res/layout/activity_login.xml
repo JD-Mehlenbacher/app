@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F6"
+    tools:context=".Login">
+
+    <Button
+        android:id="@+id/homePageButtonLoginPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginTextLoginPage"
+        android:layout_width="228dp"
+        android:layout_height="63dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_horizontal"
+        android:text="LOGIN"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
+
+    <EditText
+        android:id="@+id/userNameInputLoginPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Username/Email"
+        android:inputType="textPersonName"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/passwordInputLoginPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:textColorHint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginTextLoginPage"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <EditText
+        android:id="@+id/passwordInputLoginPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:textColorHint="@color/blue"
+        android:inputType="textPersonName"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/loginButtonLoginPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameInputLoginPage"
+        app:layout_constraintVertical_bias="0.197" />
+
+    <Button
+        android:id="@+id/loginButtonLoginPage"
+        android:layout_width="143dp"
+        android:layout_height="49dp"
+        android:text="Login"
+        app:layout_constraintBottom_toTopOf="@+id/registerButtonLoginPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:background="@drawable/cutom_rounded_corners"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInputLoginPage"
+        app:layout_constraintVertical_bias="0.576" />
+
+    <Button
+        android:id="@+id/registerButtonLoginPage"
+        android:layout_width="143dp"
+        android:layout_height="49dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="REGISTER"
+        app:layout_constraintBottom_toTopOf="@+id/usernameEmailDoesntExistLoginPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButtonLoginPage"
+        app:layout_constraintVertical_bias="0.668" />
+
+    <TextView
+        android:id="@+id/usernameEmailDoesntExistLoginPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Username Or Email Doesnt Exist"
+        android:textColor="#FF1744"
+        app:layout_constraintBottom_toTopOf="@+id/incorrectPasswordLoginPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButtonLoginPage"
+        app:layout_constraintVertical_bias="0.256" />
+
+    <TextView
+        android:id="@+id/incorrectPasswordLoginPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Incorrect Password"
+        android:textColor="#FF1744"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEmailDoesntExistLoginPage"
+        app:layout_constraintVertical_bias="0.463" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/untitled_1__1_" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
