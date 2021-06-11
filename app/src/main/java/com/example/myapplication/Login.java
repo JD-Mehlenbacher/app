@@ -30,6 +30,9 @@ public class Login extends AppCompatActivity {
     private String userNameInputVar;
     private String passwordInputVar;
 
+    private boolean usernameInputted = false;
+    private boolean emailInputted = false;
+
     Connection connect;
     String ConnectionResult = "";
 
@@ -124,17 +127,20 @@ public class Login extends AppCompatActivity {
                 while (rs.next()) {
                     if (rs.getString("Username").equals(userNameInputVar)) {
                         errorStateHelper.usernameEmailErrorLogin = false;
+                        usernameInputted = true;
                         break;
                         //ERROR STUFF
                     }
                     else{
                         if (rs.getString("Email").equals(userNameInputVar)) {
                             errorStateHelper.usernameEmailErrorLogin = false;
+                            emailInputted = true;
                             break;
                             //ERROR STUFF
                         }
                         else{
                             errorStateHelper.usernameEmailErrorLogin = true;
+                            //System.out.println("doesnt exist");
                         }
                     }
 
@@ -156,24 +162,48 @@ public class Login extends AppCompatActivity {
             connect = connectionHelper.connectionClass();
             if (connect != null) {
                 Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
-                if (!rs.next()) {
-                    rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + userNameInputVar + "\'");
-                }
+                if (usernameInputted) {
+                    ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
+                    //System.out.println("IN CHECK PASSWORD");
 
-                while (rs.next()) {
-                    if (rs.getString("Password").equals(passwordInputVar)) {
-                        System.out.println("PASSWORDS MATCH");
-                        System.out.println("STORED: " + rs.getString("Password"));
-                        System.out.println("INPUTTED: " + passwordInputVar);
-                        errorStateHelper.incorrectPasswordLogin = false;
+                    while (rs.next()) {
+                       // System.out.println("IN WHILE LOOP");
+                        if (rs.getString("Password").equals(passwordInputVar)) {
+                            //System.out.println("PASSWORDS MATCH");
+                           // System.out.println("STORED: " + rs.getString("Password"));
+                           // System.out.println("INPUTTED: " + passwordInputVar);
+                            errorStateHelper.incorrectPasswordLogin = false;
+                        }
+                        else{
+                           // System.out.println("NO Match");
+                           // System.out.println("STORED: " + rs.getString("Password"));
+                           // System.out.println("INPUTTED: " + passwordInputVar);
+                            errorStateHelper.incorrectPasswordLogin = true;
+                        }
                     }
-                    else{
-                        System.out.println("NO Match");
-                        System.out.println("STORED: " + rs.getString("Password"));
-                        System.out.println("INPUTTED: " + passwordInputVar);
-                        errorStateHelper.incorrectPasswordLogin = true;
+                }
+                else if (emailInputted) {
+                    ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + userNameInputVar + "\'");
+                    System.out.println("email Inputted for Check Password");
+
+                    while (rs.next()) {
+                        System.out.println("IN WHILE LOOP");
+                        if (rs.getString("Password").equals(passwordInputVar)) {
+                            System.out.println("PASSWORDS MATCH");
+                            System.out.println("STORED: " + rs.getString("Password"));
+                            System.out.println("INPUTTED: " + passwordInputVar);
+                            errorStateHelper.incorrectPasswordLogin = false;
+                        }
+                        else{
+                            System.out.println("NO Match");
+                            System.out.println("STORED: " + rs.getString("Password"));
+                            System.out.println("INPUTTED: " + passwordInputVar);
+                            errorStateHelper.incorrectPasswordLogin = true;
+                        }
                     }
+                }
+                else {
+
                 }
                 st.close();
             }

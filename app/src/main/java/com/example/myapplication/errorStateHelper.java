@@ -21,14 +21,15 @@ public class errorStateHelper {
     public static boolean selectedAddress=false;
     public static boolean checkBuildingError=false;
 
-    public static boolean passwordsDontMatchErrorSecurity=false;
-    public static boolean incorrectAnswerErrorSecurity=false;
-
+    public static boolean passwordsDontMatchSecurity=false;
     public static boolean emailDoesntExistSecurity=false;
+    public static boolean incorrectAnswerSecurity=false;
 
 
     public static boolean buildingOrUnit=false;
     public static String building = "";
+
+    public static int stageSecurity=1;
 
     public static void reset() {
         passwordErrorRegister = false;

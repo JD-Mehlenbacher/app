@@ -28,7 +28,7 @@
         app:srcCompat="@drawable/untitled_1__1_" />
 
     <TextView
-        android:id="@+id/loginTextLoginPage"
+        android:id="@+id/SecurityText"
         android:layout_width="283dp"
         android:layout_height="97dp"
         android:autoSizeTextType="uniform"
@@ -46,8 +46,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Security Question"
-        android:inputType="textPersonName"
+        android:text="Security Question"
+        android:inputType="none"
         android:textColor="@color/blue"
         android:textColorHint="@color/blue"
         android:textSize="20dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTextLoginPage" />
+        app:layout_constraintTop_toBottomOf="@+id/SecurityText" />
 
     <EditText
         android:id="@+id/input2Security"
@@ -67,7 +67,7 @@
         android:textColor="@color/blue"
         android:textColorHint="@color/blue"
 
-        app:layout_constraintBottom_toTopOf="@+id/confirmButtonSecurityPage"
+        app:layout_constraintBottom_toTopOf="@+id/confirmEmailButtonSecurityPage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:textColor="@color/blue"
         android:textColorHint="@color/blue"
 
-        app:layout_constraintBottom_toTopOf="@+id/confirmButtonSecurityPage"
+        app:layout_constraintBottom_toTopOf="@+id/confirmEmailButtonSecurityPage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,15 +102,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmButtonSecurityPage" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmEmailButtonSecurityPage" />
 
 
     <Button
-        android:id="@+id/confirmButtonSecurityPage"
+        android:id="@+id/confirmEmailButtonSecurityPage"
         android:layout_width="143dp"
         android:layout_height="55dp"
         android:background="@drawable/cutom_rounded_corners"
         android:text="Confirm Email"
+        app:layout_constraintBottom_toTopOf="@+id/errorMessageSecurity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSecurity" />
+    <Button
+        android:id="@+id/confirmAnswerButtonSecurityPage"
+        android:layout_width="143dp"
+        android:layout_height="55dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Confirm Amswer"
+        app:layout_constraintBottom_toTopOf="@+id/errorMessageSecurity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSecurity" />
+    <Button
+        android:id="@+id/confirmPasswordButtonSecurityPage"
+        android:layout_width="143dp"
+        android:layout_height="55dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Confirm Password"
         app:layout_constraintBottom_toTopOf="@+id/errorMessageSecurity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

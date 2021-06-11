@@ -29,8 +29,9 @@ public class SecurityQuestions extends AppCompatActivity {
 
     private TextView securityQuestion;
     private TextView incorrectAnswer;
-    private TextView passwordsDontMatch;
+    private TextView errorMessage;
     private TextView emailDoesNotExist;
+    private TextView SecurityText;
 
     private String passwordInputVar;
     private String confirmPasswordInputVar;
@@ -39,6 +40,7 @@ public class SecurityQuestions extends AppCompatActivity {
 
     private String currentAnswer;
     private String currentQuestion;
+
 
 
     Connection connect;
@@ -57,59 +59,97 @@ public class SecurityQuestions extends AppCompatActivity {
 
             }
         });
-        confirmButton=(Button) findViewById(R.id.confirmButtonSecurityPage);
+        confirmButton=(Button) findViewById(R.id.confirmAnswerButtonSecurityPage);
         confirmButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                checkAnswer();
                 System.out.println("1");
             }
         });
-        changePasswordButton=(Button) findViewById(R.id.confirmButtonSecurityPage);
+        confirmButton.setVisibility(View.INVISIBLE);
+        changePasswordButton=(Button) findViewById(R.id.confirmPasswordButtonSecurityPage);
         changePasswordButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                checkPassword();
                 System.out.println("2");
             }
         });
-        confirmEmailButton=(Button) findViewById(R.id.confirmButtonSecurityPage);
+        changePasswordButton.setVisibility(View.INVISIBLE);
+        confirmEmailButton=(Button) findViewById(R.id.confirmEmailButtonSecurityPage);
         confirmEmailButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 confirmEmail();
-                System.out.println("1");
+                System.out.println("3");
             }
         });
+        confirmEmailButton.setVisibility(View.INVISIBLE);
 
 
 
         passwordInput=(EditText) findViewById(R.id.inputSecurity);
         confirmPasswordInput=(EditText) findViewById(R.id.input2Security);
         emailInput=(EditText) findViewById(R.id.inputSecurity);
+        securityAnswer=(EditText) findViewById(R.id.inputSecurity);
+        passwordInput.setVisibility(View.INVISIBLE);
+        confirmPasswordInput.setVisibility(View.INVISIBLE);
 
-        passwordsDontMatch=(TextView) findViewById(R.id.errorMessageSecurity);
+        errorMessage=(TextView) findViewById(R.id.errorMessageSecurity);
         incorrectAnswer=(TextView) findViewById(R.id.errorMessageSecurity);
         securityQuestion=(TextView) findViewById(R.id.securityQuestionTextView);
         emailDoesNotExist=(TextView) findViewById(R.id.errorMessageSecurity);
-
-        //Stage 1
+        SecurityText=(TextView) findViewById(R.id.SecurityText);
         securityQuestion.setVisibility(View.INVISIBLE);
+        switch(errorStateHelper.stageSecurity){
+            case 1:
+                stage1();
+                break;
+            case 2:
+                stage2();
+                break;
+            case 3:
+                stage3();
+                break;
+        }
+        errorMessage.setVisibility(View.VISIBLE);
+        if(errorStateHelper.incorrectAnswerSecurity){
+            errorMessage.setText("Incorrect Answer");
+        }
+
+        else if(errorStateHelper.emailDoesntExistSecurity){
+            errorMessage.setText("Email Does not Exist");
+        }
+        else if(errorStateHelper.passwordsDontMatchSecurity){
+            errorMessage.setText("Passwords Dont Match");
+        }
+        else{
+            errorMessage.setText("");
+        }
+    }
+    public void stage1(){
+        SecurityText.setText("Confirm Email");
+        confirmEmailButton.setVisibility(View.VISIBLE);
         emailDoesNotExist.setText("Email Does Not Exist");
-        emailDoesNotExist.setVisibility(View.INVISIBLE);
-
-
+        emailInput.setVisibility(View.VISIBLE);
     }
     public void stage2(){
+        currentQuestion=currentUser.question;
+        SecurityText.setText("Confirm Answer");
+        securityAnswer.setText("");
+        securityAnswer.setVisibility(View.VISIBLE);
         securityQuestion.setVisibility(View.VISIBLE);
         securityQuestion.setText(currentQuestion);
         securityAnswer.setHint("Input Security Answer");
-        confirmEmailButton.setVisibility(View.INVISIBLE);
-        confirmButton.setVisibility(View.VISIBLE);
         confirmButton.setText("Confirm Answer");
+        confirmButton.setVisibility(View.VISIBLE);
+        System.out.println("stage2");
     }
     public void stage3(){
-        securityQuestion.setVisibility(View.INVISIBLE);
-        securityQuestion.setVisibility(View.INVISIBLE);
-        securityAnswer.setHint("Input New Password");
-        confirmButton.setVisibility(View.INVISIBLE);
+        SecurityText.setText("Confirm Password");
+        passwordInput.setHint("Input New Password");
+        confirmPasswordInput.setHint("Confirm New Password");
+        confirmPasswordInput.setVisibility(View.VISIBLE);
+        passwordInput.setVisibility(View.VISIBLE);
+        System.out.println("STAGE 3");
         changePasswordButton.setVisibility(View.VISIBLE);
         changePasswordButton.setText("Confirm New Password");
     }
@@ -122,32 +162,27 @@ public class SecurityQuestions extends AppCompatActivity {
                 connect = connectionHelper.connectionClass();
                 if (connect != null) {
                     Statement st = connect.createStatement();
-
-                    ResultSet rs = st.executeQuery("SELECT * FROM TenantData");
-
-                    while (rs.next()) {
-                        if (rs.getString("Email").equals(emailInputVar)) {
-
-                            
-                            break;
-                        }
-
-
-                    }
+                    System.out.println("PASSWORD: " + passwordInputVar);
+                    System.out.println("EMAIL: " + currentUser.email);
+                    st.executeUpdate("UPDATE TenantData SET Password = \'" + passwordInputVar + "\' WHERE Email = \'" + currentUser.email + "\'");
                     st.close();
                 }
                 else {
                     ConnectionResult = "Check Connection";
                 }
-                connect.close();
             } catch (Exception ex) {
-                System.out.println("ERROR");
+                System.out.println("UPDATE NO WORK");
             }
+            errorStateHelper.passwordsDontMatchSecurity=false;
             Intent intent= new Intent(this, com.example.myapplication.homePage.class);
             startActivity(intent);
+
         }
         else{
-            //handle error
+            errorStateHelper.passwordsDontMatchSecurity=true;
+            Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
+            startActivity(intent);
+
         }
     }
     public void confirmEmail(){
@@ -161,18 +196,24 @@ public class SecurityQuestions extends AppCompatActivity {
                 ResultSet rs = st.executeQuery("SELECT * FROM TenantData");
 
                 while (rs.next()) {
+
                     if (rs.getString("Email").equals(emailInputVar)) {
                         currentQuestion=rs.getString("Security_Question");
                         currentAnswer=rs.getString("Security_Answer");
+                        currentUser.email = emailInputVar;
+                        currentUser.question=currentQuestion;
+                        currentUser.answer=currentAnswer;
                         errorStateHelper.emailDoesntExistSecurity = false;
-                        stage2();
+                        errorStateHelper.stageSecurity=2;
+                        Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
+                        startActivity(intent);
                         break;
                     }
                     else{
                         errorStateHelper.emailDoesntExistSecurity=true;
-
+                        Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
+                        startActivity(intent);
                     }
-
                 }
                 st.close();
             }
@@ -181,20 +222,34 @@ public class SecurityQuestions extends AppCompatActivity {
             }
             connect.close();
         } catch (Exception ex) {
-            System.out.println("ERROR");
+            System.out.println("EMAIL NO WORK");
         }
+
+
     }
+
     public void checkAnswer(){
+        currentAnswer=currentUser.answer;
+        currentQuestion=currentUser.question;
         answerInputVar=securityAnswer.getText().toString();
+        System.out.println(answerInputVar);
+        System.out.println(currentAnswer);
         if(answerInputVar.equals(currentAnswer)){
-            errorStateHelper.incorrectAnswerErrorSecurity=false;
-            stage3();
+            errorStateHelper.stageSecurity=3;
+            errorStateHelper.incorrectAnswerSecurity=false;
+            Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
+            startActivity(intent);
+
         }
         else{
-            errorStateHelper.incorrectAnswerErrorSecurity=true;
+            errorStateHelper.incorrectAnswerSecurity=true;
+            Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
+            startActivity(intent);
         }
     }
+
     public void returnLogin(){
+        errorStateHelper.stageSecurity=1;
         errorStateHelper.reset();
         Intent intent= new Intent(this, com.example.myapplication.Login.class);
         startActivity(intent);
