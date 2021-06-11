@@ -27,7 +27,8 @@ public class Register extends AppCompatActivity {
     private EditText emailInput;
     private EditText phoneInput;
     private EditText userInput;
-    private EditText addressInput;
+    private EditText securityQuestion;
+    private EditText securityAnswer;
     private EditText passwordInput;
     private EditText confirmPasswordInput;
 
@@ -43,6 +44,8 @@ public class Register extends AppCompatActivity {
     private String addressInputVar;
     private String passwordInputVar;
     private String confirmPasswordInputVar;
+    private String securityQuestionVar;
+    private String securityAnswerVar;
 
     private Spinner addressDropdown;
     List <String> buildings= new ArrayList<String>();
@@ -61,7 +64,7 @@ public class Register extends AppCompatActivity {
                 returnMainPageActivity();
             }
         });
-        RegisterButton = (Button) findViewById(R.id.registerButtonRegisterPage);
+        RegisterButton = (Button) findViewById(R.id.SubmitButtonChangeLogin);
         RegisterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 checkError();
@@ -73,15 +76,16 @@ public class Register extends AppCompatActivity {
         buildings.add("Creekside");
         nameInput = (EditText) findViewById(R.id.nameInputRegisterPage);
         emailInput = (EditText) findViewById(R.id.emailInputRegisterPage);
-        phoneInput = (EditText) findViewById(R.id.phoneInputRegisterPage);
-        userInput = (EditText) findViewById(R.id.usernameInputRegisterPage);
-        addressInput = (EditText) findViewById(R.id.addressInputRegisterPage);
-        passwordInput = (EditText) findViewById(R.id.passwordInputRegisterPage);
-        confirmPasswordInput = (EditText) findViewById(R.id.confirmPasswordInputRegisterPage);
+        phoneInput = (EditText) findViewById(R.id.phoneInputChangeLogin);
+        userInput = (EditText) findViewById(R.id.usernameInputChangeLogin);
+        passwordInput = (EditText) findViewById(R.id.passwordInputChangeLogin);
+        confirmPasswordInput = (EditText) findViewById(R.id.confirmPasswordInputChangeLogin);
+        securityQuestion = (EditText) findViewById(R.id.securityQuestionRegister);
+        securityAnswer = (EditText) findViewById(R.id.securityAnswerRegister);
 
-        wrongPassword = (TextView) findViewById(R.id.passwordsDontMatchRegisterPage);
-        duplicateField = (TextView) findViewById(R.id.duplicateFieldRegisterPage);
-        emptyField = (TextView) findViewById(R.id.emptyFieldsRegisterPage);
+        wrongPassword = (TextView) findViewById(R.id.passwordsDontMatchChangeLogin);
+        duplicateField = (TextView) findViewById(R.id.duplicateFieldChangeLogin);
+        emptyField = (TextView) findViewById(R.id.emptyFieldsChangeLogin);
 
         addressDropdown=(Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(Register.this, android.R.layout.simple_spinner_item,buildings);
@@ -131,7 +135,8 @@ public class Register extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
                 st.executeUpdate("INSERT INTO TenantData VALUES (" + "\'" + nameInputVar + "\', \'"
-                        + userInputVar + "\', \'" + emailInputVar + "\', \'" + phoneInputVar + "\', \'" + addressInputVar + "\', \'" + passwordInputVar + "\')");
+                        + userInputVar + "\', \'" + emailInputVar + "\', \'" + phoneInputVar + "\', \'"
+                        + addressInputVar + "\', \'" + passwordInputVar + "\', \'" + securityQuestionVar + "\', \'" + securityAnswerVar + "\')");
                 currentUser.email = emailInputVar;
                 currentUser.userName = userInputVar;
             } else {
@@ -162,8 +167,10 @@ public class Register extends AppCompatActivity {
         userInputVar = userInput.getText().toString();
         emailInputVar = emailInput.getText().toString();
         phoneInputVar = phoneInput.getText().toString();
-        
-        
+        securityQuestionVar = securityQuestion.getText().toString();
+        securityAnswerVar = securityAnswer.getText().toString();
+
+
         checkPasswordMatch();
         checkDuplicates();
         blankFields();
@@ -190,7 +197,8 @@ public class Register extends AppCompatActivity {
     public void blankFields() {
         if (nameInputVar.equals("") || emailInputVar.equals("") || phoneInputVar.equals("")
                 || userInputVar.equals("") || errorStateHelper.selectedAddress==false
-                || passwordInputVar.equals("") || confirmPasswordInputVar.equals(""))  {
+                || passwordInputVar.equals("") || confirmPasswordInputVar.equals("")
+                || securityQuestionVar.equals("") || securityAnswerVar.equals(""))  {
             errorStateHelper.blankFieldsRegister = true;
         }
         else{

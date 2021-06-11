@@ -19,7 +19,7 @@ public class Login extends AppCompatActivity {
 
     private Button HomePage;
     private Button LoginButton;
-    private Button RegisterButton;
+    private Button forgotButton;
 
     private EditText UsernameInput;
     private EditText PasswordInput;
@@ -39,40 +39,40 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-        HomePage=(Button) findViewById(R.id.homePageButtonLoginPage);
+        HomePage=(Button) findViewById(R.id.backButtonSecurity);
         HomePage.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 returnMainPageActivity();
             }
         });
-        LoginButton=(Button) findViewById(R.id.loginButtonLoginPage);
+        LoginButton=(Button) findViewById(R.id.confirmButtonSecurity);
         LoginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 checkError();
 
             }
         });
-        RegisterButton=(Button) findViewById(R.id.registerButtonLoginPage);
-        RegisterButton.setOnClickListener(new View.OnClickListener(){
+        forgotButton=(Button) findViewById(R.id.changePasswordButtonSecurity);
+        forgotButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                goToRegister();
+                securityQuestions();
             }
         });
-        RegisterButton.setVisibility(View.INVISIBLE);
-        UsernameInput=(EditText) findViewById(R.id.userNameInputLoginPage);
-        PasswordInput= (EditText) findViewById(R.id.passwordInputLoginPage);
+        forgotButton.setVisibility(View.INVISIBLE);
+        UsernameInput=(EditText) findViewById(R.id.securityQuestionTextView);
+        PasswordInput= (EditText) findViewById(R.id.SecurityQuestionAnswer);
 
-        usernameEmailDoesntExist=(TextView) findViewById(R.id.usernameEmailDoesntExistLoginPage);
-        incorrectPassword=(TextView) findViewById(R.id.incorrectPasswordLoginPage);
+        usernameEmailDoesntExist=(TextView) findViewById(R.id.errorMessageSecurity);
+        incorrectPassword=(TextView) findViewById(R.id.passwordsDontMatchTextviewSecurity);
 
         if(errorStateHelper.usernameEmailErrorLogin ){
             usernameEmailDoesntExist.setVisibility(View.VISIBLE);
-            RegisterButton.setVisibility(View.VISIBLE);
         }
         else{
             usernameEmailDoesntExist.setVisibility(View.INVISIBLE);
             if(errorStateHelper.incorrectPasswordLogin ){
                 incorrectPassword.setVisibility(View.VISIBLE);
+                forgotButton.setVisibility(View.VISIBLE);
             }
             else{
                 incorrectPassword.setVisibility(View.INVISIBLE);
@@ -89,13 +89,14 @@ public class Login extends AppCompatActivity {
         currentUser.userName = userNameInputVar;
         currentUser.email = userNameInputVar;
 
+
         Intent intent= new Intent(this, com.example.myapplication.homePage.class);
         startActivity(intent);
 
     }
-    public void goToRegister(){
+    public void securityQuestions(){
         errorStateHelper.reset();
-        Intent intent= new Intent(this, com.example.myapplication.Register.class);
+        Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
         startActivity(intent);
     }
     public void checkError(){
@@ -149,22 +150,28 @@ public class Login extends AppCompatActivity {
         }
     }
     public void checkPassword() {
+        userNameInputVar=UsernameInput.getText().toString();
         try {
             ConnectionHelper connectionHelper = new ConnectionHelper();
             connect = connectionHelper.connectionClass();
-            ResultSet rs = null;
             if (connect != null) {
                 Statement st = connect.createStatement();
-                rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
+                ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
                 if (!rs.next()) {
                     rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + userNameInputVar + "\'");
                 }
 
                 while (rs.next()) {
                     if (rs.getString("Password").equals(passwordInputVar)) {
+                        System.out.println("PASSWORDS MATCH");
+                        System.out.println("STORED: " + rs.getString("Password"));
+                        System.out.println("INPUTTED: " + passwordInputVar);
                         errorStateHelper.incorrectPasswordLogin = false;
                     }
                     else{
+                        System.out.println("NO Match");
+                        System.out.println("STORED: " + rs.getString("Password"));
+                        System.out.println("INPUTTED: " + passwordInputVar);
                         errorStateHelper.incorrectPasswordLogin = true;
                     }
                 }

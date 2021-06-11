@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.EditProfile;
 import com.example.myapplication.R;
 import com.example.myapplication.Register;
 import com.example.myapplication.databinding.FragmentNotificationsBinding;

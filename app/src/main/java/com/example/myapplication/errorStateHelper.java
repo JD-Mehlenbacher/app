@@ -7,10 +7,24 @@ public class errorStateHelper {
     public static boolean blankFieldsRegister = false;
     public static String duplicateMessageRegister = "";
 
+    public static boolean passwordErrorChangeLogin = false;
+    public static boolean usernameExistsChangeLogin = false;
+    public static boolean emailExistsChangeLogin = false;
+    public static boolean phoneExistsChangeLogin = false;
+    public static boolean blankFieldsChangeLogin = false;
+    public static String duplicateMessageChangeLogin = "";
+    public static boolean selectedAdressChangeLogin =false;
+
+
     public static boolean usernameEmailErrorLogin = false;
     public static boolean incorrectPasswordLogin = false;
     public static boolean selectedAddress=false;
     public static boolean checkBuildingError=false;
+
+    public static boolean passwordsDontMatchErrorSecurity=false;
+    public static boolean incorrectAnswerErrorSecurity=false;
+
+    public static boolean emailDoesntExistSecurity=false;
 
 
     public static boolean buildingOrUnit=false;

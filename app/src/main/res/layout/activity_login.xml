@@ -8,7 +8,7 @@
     tools:context=".Login">
 
     <Button
-        android:id="@+id/homePageButtonLoginPage"
+        android:id="@+id/backButtonSecurity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -35,14 +35,14 @@
         app:layout_constraintVertical_bias="0.258" />
 
     <EditText
-        android:id="@+id/userNameInputLoginPage"
+        android:id="@+id/securityQuestionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Username/Email"
         android:inputType="textPersonName"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/passwordInputLoginPage"
+        app:layout_constraintBottom_toTopOf="@+id/SecurityQuestionAnswer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         android:textColorHint="@color/blue"
@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.188" />
 
     <EditText
-        android:id="@+id/passwordInputLoginPage"
+        android:id="@+id/SecurityQuestionAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -59,55 +59,55 @@
         android:textColorHint="@color/blue"
         android:inputType="textPersonName"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/loginButtonLoginPage"
+        app:layout_constraintBottom_toTopOf="@+id/confirmButtonSecurity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameInputLoginPage"
+        app:layout_constraintTop_toBottomOf="@+id/securityQuestionTextView"
         app:layout_constraintVertical_bias="0.197" />
 
     <Button
-        android:id="@+id/loginButtonLoginPage"
+        android:id="@+id/confirmButtonSecurity"
         android:layout_width="143dp"
         android:layout_height="49dp"
         android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/registerButtonLoginPage"
+        app:layout_constraintBottom_toTopOf="@+id/changePasswordButtonSecurity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         android:background="@drawable/cutom_rounded_corners"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInputLoginPage"
+        app:layout_constraintTop_toBottomOf="@+id/SecurityQuestionAnswer"
         app:layout_constraintVertical_bias="0.576" />
 
     <Button
-        android:id="@+id/registerButtonLoginPage"
+        android:id="@+id/changePasswordButtonSecurity"
         android:layout_width="143dp"
-        android:layout_height="49dp"
+        android:layout_height="55dp"
         android:background="@drawable/cutom_rounded_corners"
-        android:text="REGISTER"
-        app:layout_constraintBottom_toTopOf="@+id/usernameEmailDoesntExistLoginPage"
+        android:text="Forgot Password"
+        app:layout_constraintBottom_toTopOf="@+id/errorMessageSecurity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButtonLoginPage"
+        app:layout_constraintTop_toBottomOf="@+id/confirmButtonSecurity"
         app:layout_constraintVertical_bias="0.668" />
 
     <TextView
-        android:id="@+id/usernameEmailDoesntExistLoginPage"
+        android:id="@+id/errorMessageSecurity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Username Or Email Doesnt Exist"
         android:textColor="#FF1744"
-        app:layout_constraintBottom_toTopOf="@+id/incorrectPasswordLoginPage"
+        app:layout_constraintBottom_toTopOf="@+id/passwordsDontMatchTextviewSecurity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButtonLoginPage"
+        app:layout_constraintTop_toBottomOf="@+id/changePasswordButtonSecurity"
         app:layout_constraintVertical_bias="0.256" />
 
     <TextView
-        android:id="@+id/incorrectPasswordLoginPage"
+        android:id="@+id/passwordsDontMatchTextviewSecurity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -117,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEmailDoesntExistLoginPage"
+        app:layout_constraintTop_toBottomOf="@+id/errorMessageSecurity"
         app:layout_constraintVertical_bias="0.463" />
 
     <ImageView
