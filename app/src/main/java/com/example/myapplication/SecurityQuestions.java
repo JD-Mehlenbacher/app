@@ -174,6 +174,7 @@ public class SecurityQuestions extends AppCompatActivity {
                 System.out.println("UPDATE NO WORK");
             }
             errorStateHelper.passwordsDontMatchSecurity=false;
+            errorStateHelper.reset();
             Intent intent= new Intent(this, com.example.myapplication.homePage.class);
             startActivity(intent);
 

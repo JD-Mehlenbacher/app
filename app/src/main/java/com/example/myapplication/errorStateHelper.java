@@ -43,5 +43,11 @@ public class errorStateHelper {
         incorrectPasswordLogin = false;
         selectedAddress=false;
         checkBuildingError=false;
+
+        passwordsDontMatchSecurity=false;
+        emailDoesntExistSecurity=false;
+        incorrectAnswerSecurity=false;
+
+        stageSecurity=1;
     }
 }
