@@ -32,19 +32,19 @@
 
     <TextView
         android:id="@+id/welcomeTextMainPage"
-        android:layout_width="394dp"
-        android:layout_height="139dp"
-        android:autoSizeTextType="uniform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="PROPERTY MANAGER LOGIN"
         android:textColor="@color/blue"
+        android:textSize="50dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/loginButtonMainPage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.638" />
 
     <Button
         android:id="@+id/RegisterButtonSettingsPage"
