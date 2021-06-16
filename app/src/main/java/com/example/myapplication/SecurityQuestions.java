@@ -164,7 +164,7 @@ public class SecurityQuestions extends AppCompatActivity {
                     Statement st = connect.createStatement();
                     System.out.println("PASSWORD: " + passwordInputVar);
                     System.out.println("EMAIL: " + currentUser.email);
-                    st.executeUpdate("UPDATE TenantData SET Password = \'" + passwordInputVar + "\' WHERE Email = \'" + currentUser.email + "\'");
+                    st.executeUpdate("UPDATE UserInfo SET Password = \'" + passwordInputVar + "\' WHERE Email = \'" + currentUser.email + "\'");
                     st.close();
                 }
                 else {
@@ -194,7 +194,7 @@ public class SecurityQuestions extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
 
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData");
+                ResultSet rs = st.executeQuery("SELECT * FROM UserInfo");
 
                 while (rs.next()) {
 

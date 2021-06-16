@@ -134,11 +134,11 @@ public class Register extends AppCompatActivity {
             connect = connectionHelper.connectionClass();
             if (connect != null) {
                 Statement st = connect.createStatement();
-                st.executeUpdate("INSERT INTO TenantData VALUES (" + "\'" + nameInputVar + "\', \'"
+                st.executeUpdate("INSERT INTO UserInfo VALUES (" + "\'" + nameInputVar + "\', \'"
                         + userInputVar + "\', \'" + emailInputVar + "\', \'" + phoneInputVar + "\', \'"
                         + addressInputVar + "\', \'" + passwordInputVar + "\', \'" + securityQuestionVar + "\', \'" + securityAnswerVar + "\')");
-                currentUser.email = emailInputVar;
-                currentUser.userName = userInputVar;
+                //currentUser.email = emailInputVar;
+                //currentUser.userName = userInputVar;
             } else {
                 ConnectionResult = "Check Connection";
             }
@@ -214,7 +214,7 @@ public class Register extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
 
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData");
+                ResultSet rs = st.executeQuery("SELECT * FROM UserInfo");
 
                 while (rs.next()) {
                     if (rs.getString("Username").equals(userInputVar)) {

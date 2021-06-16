@@ -172,12 +172,12 @@ public class EditProfile extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
 
-                st.executeUpdate("DELETE FROM TenantData WHERE Email = \'" + currentUser.email + "\'");
+                st.executeUpdate("DELETE FROM UserInfo WHERE Email = \'" + currentUser.email + "\'");
 
                 currentUser.email = emailInputVar;
                 currentUser.userName = usernameInputVar;
 
-                st.executeUpdate("INSERT INTO TenantData VALUES (" + "\'" + nameInputVar + "\', \'"
+                st.executeUpdate("INSERT INTO UserInfo VALUES (" + "\'" + nameInputVar + "\', \'"
                         + usernameInputVar + "\', \'" + emailInputVar + "\', \'" + phoneInputVar + "\', \'"
                         + addressInputVar + "\', \'" + passwordInputVar + "\', \'" + securityQuestionInputVar + "\', \'" + securityAnswerInputVar + "\')");
 
@@ -203,7 +203,7 @@ public class EditProfile extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
 
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + currentUser.email + "\'");
+                ResultSet rs = st.executeQuery("SELECT * FROM UserInfo WHERE Email = \'" + currentUser.email + "\'");
 
                 while (rs.next()) {
                     nameInput.setText(rs.getString("Name"));
@@ -264,7 +264,7 @@ public class EditProfile extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
 
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData");
+                ResultSet rs = st.executeQuery("SELECT * FROM UserInfo");
 
                 while (rs.next()) {
                     if (rs.getString("Username").equals(usernameInputVar)&&!(currentUser.userName.equals(rs.getString("Username")))) {

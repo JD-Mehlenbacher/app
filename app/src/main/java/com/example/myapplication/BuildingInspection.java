@@ -11,9 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -40,8 +43,11 @@ public class BuildingInspection extends Fragment {
     private EditText comments;
 
     private ArrayList<Integer> values;
+    private ArrayList<Integer> workOrder;
     private ArrayList<String> fields;
     private ArrayList<String> commentList;
+
+
 
     private int question=0;
 
@@ -55,9 +61,10 @@ public class BuildingInspection extends Fragment {
                              Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_building_inspection3, container, false);
 
-        values = new ArrayList<>(Arrays.asList(-1,-1,-1,-1,-1));
-        fields = new ArrayList<>(Arrays.asList("Smoke Alarm","HVAC","Lobby Cleanliness","Lights","Gym Cleanliness"));
-        commentList = new ArrayList<>(Arrays.asList("","","","",""));
+        values = new ArrayList<>();
+        workOrder = new ArrayList<>();
+        fields = new ArrayList<>();
+        commentList = new ArrayList<>();
 
         FieldText=(TextView) rootView.findViewById(R.id.firstRowTextBuilding);
 
@@ -79,6 +86,7 @@ public class BuildingInspection extends Fragment {
 
             }
         });
+
         FieldText.setText(fields.get(0));
         checkBoxError=(TextView) rootView.findViewById(R.id.checkBoxErrorBuilding);
         if(errorStateHelper.checkBuildingError){
@@ -91,6 +99,7 @@ public class BuildingInspection extends Fragment {
 
         return rootView;
     }
+
 
     public void setArray(int index, CheckBox one, CheckBox two) {
         if (one.isChecked() && !two.isChecked()) {

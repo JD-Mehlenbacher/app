@@ -19,6 +19,7 @@
         android:background="@drawable/cutom_rounded_corners"
         android:text="Daily Building Inspection"
         android:textSize="15dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/unitDailyInspectionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,6 +33,7 @@
         android:background="@drawable/cutom_rounded_corners"
         android:text="Custom Inspection"
         android:textSize="15dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -45,11 +47,38 @@
         android:background="@drawable/cutom_rounded_corners"
         android:text="Daily Unit Inspection"
         android:textSize="20dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/customInspectionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buildingDailyInspectionButton" />
+
+    <Spinner
+        android:id="@+id/buildingDropDownInspection"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <Spinner
+        android:id="@+id/typeDropDownInspection"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.648" />
 
     <TextView
         android:id="@+id/textView5"

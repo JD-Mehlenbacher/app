@@ -122,7 +122,7 @@ public class Login extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
 
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData");
+                ResultSet rs = st.executeQuery("SELECT * FROM UserInfo");
 
                 while (rs.next()) {
                     if (rs.getString("Username").equals(userNameInputVar)) {
@@ -163,7 +163,7 @@ public class Login extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
                 if (usernameInputted) {
-                    ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
+                    ResultSet rs = st.executeQuery("SELECT * FROM UserInfo WHERE Username = \'" + userNameInputVar + "\'");
                     //System.out.println("IN CHECK PASSWORD");
 
                     while (rs.next()) {
@@ -183,7 +183,7 @@ public class Login extends AppCompatActivity {
                     }
                 }
                 else if (emailInputted) {
-                    ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + userNameInputVar + "\'");
+                    ResultSet rs = st.executeQuery("SELECT * FROM UserInfo WHERE Email = \'" + userNameInputVar + "\'");
                     System.out.println("email Inputted for Check Password");
 
                     while (rs.next()) {

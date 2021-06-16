@@ -31,6 +31,9 @@ public class errorStateHelper {
 
     public static int stageSecurity=1;
 
+    public static boolean selectedBuildingInspectionError=false;
+    public static boolean selectedTypeInspectionError=false;
+
     public static void reset() {
         passwordErrorRegister = false;
         usernameExistsRegister = false;

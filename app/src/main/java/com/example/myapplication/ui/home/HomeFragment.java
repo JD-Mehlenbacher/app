@@ -66,10 +66,10 @@ public class HomeFragment extends Fragment {
                 Statement st = connect.createStatement();
 
 
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + currentUser.email + "\'");
+                ResultSet rs = st.executeQuery("SELECT * FROM UserInfo WHERE Email = \'" + currentUser.email + "\'");
                 ResultSet check = rs;
                 if (!check.next()) {
-                     rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + currentUser.userName + "\'");
+                     rs = st.executeQuery("SELECT * FROM UserInfo WHERE Username = \'" + currentUser.userName + "\'");
                 }
 
                     if (rs.getString("Address").equals("Creekside")) {
