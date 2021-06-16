@@ -14,10 +14,10 @@ public class ConnectionHelper {
     @SuppressLint("NewApi")
 
     public Connection connectionClass(){
-        ip="192.168.10.45";
-        database="patryTest";
-        uname="pab";
-        pass="plog2000";
+        ip="192.168.10.86";
+        database="PatryApp";
+        uname="patry";
+        pass="patry265";
         port="1433";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

@@ -91,7 +91,7 @@ public class HomeFragment extends Fragment {
             }
             connect.close();
         } catch (Exception ex) {
-            System.out.println("ERROR");
+            System.out.println("Error setting image.");
         }
     }
 }

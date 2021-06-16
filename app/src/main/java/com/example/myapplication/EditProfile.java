@@ -84,11 +84,11 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 addressInputVar=buildings.get(position);
-                errorStateHelper.selectedAdressChangeLogin=true;
+                errorStateHelper.selectedAdressChangeLogin=false;
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                errorStateHelper.selectedAdressChangeLogin=true;
             }
         });
 
@@ -140,6 +140,12 @@ public class EditProfile extends AppCompatActivity {
         checkPasswordMatch();
         checkDuplicates();
         blankFields();
+        System.out.println("PasswordError: " + errorStateHelper.passwordErrorChangeLogin);
+        System.out.println("UsernameExists: " + errorStateHelper.usernameExistsChangeLogin);
+        System.out.println("EmailExists: " + errorStateHelper.emailExistsChangeLogin);
+        System.out.println("PhoneExists: " + errorStateHelper.phoneExistsChangeLogin);
+        System.out.println("Blank Fields: " + errorStateHelper.blankFieldsChangeLogin);
+
         if(errorStateHelper.passwordErrorChangeLogin || errorStateHelper.usernameExistsChangeLogin
                 || errorStateHelper.emailExistsChangeLogin || errorStateHelper.phoneExistsChangeLogin
                 || errorStateHelper.blankFieldsChangeLogin){
@@ -186,7 +192,7 @@ public class EditProfile extends AppCompatActivity {
             }
             connect.close();
         } catch (Exception ex) {
-            System.out.println("ERROR");
+            System.out.println("Could not re-register user.");
         }
 
     }
@@ -214,7 +220,7 @@ public class EditProfile extends AppCompatActivity {
             }
             connect.close();
         } catch (Exception ex) {
-            System.out.println("ERROR");
+            System.out.println("Could not get Data.");
         }
     }
     public void checkPasswordMatch() {
@@ -227,13 +233,25 @@ public class EditProfile extends AppCompatActivity {
         }
     }
     public void blankFields() {
+        System.out.println("name: " + nameInputVar);
+        System.out.println("email: " + emailInputVar);
+        System.out.println("phone: " + phoneInputVar);
+        System.out.println("username: " + usernameInputVar);
+        System.out.println("pss: " + passwordInputVar);
+        System.out.println("pssc: " + passwordConfirmInputVar);
+        System.out.println("SQ: " + securityQuestionInputVar);
+        System.out.println("SA: " + securityAnswerInputVar);
+
+
         if (nameInputVar.equals("") || emailInputVar.equals("") || phoneInputVar.equals("")
-                || usernameInputVar.equals("") || errorStateHelper.selectedAddress==false
+                || usernameInputVar.equals("") || errorStateHelper.selectedAdressChangeLogin == true
                 || passwordInputVar.equals("") || passwordConfirmInputVar.equals("")
                 || securityQuestionInputVar.equals("") || securityAnswerInputVar.equals(""))  {
+            System.out.println("*********TRUE************");
             errorStateHelper.blankFieldsChangeLogin = true;
         }
         else{
+            System.out.println("FALSE");
             errorStateHelper.blankFieldsChangeLogin = false;
         }
     }

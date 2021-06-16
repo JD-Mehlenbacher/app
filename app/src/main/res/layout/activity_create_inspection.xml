@@ -4,6 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/settings_page"
     tools:context=".createInspection">
+    <Button
+        android:id="@+id/MaintenanceBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/blue"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_rounded_corners_cream"
+        android:text="Back"
+        app:backgroundTint="@color/cream"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="397dp"
+        android:layout_height="706dp"
+        android:orientation="vertical"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MaintenanceBack"
+
+        app:layout_constraintVertical_bias="1.0">
+
+        <EditText
+            android:id="@+id/titleQuestionInput"
+            android:layout_width="wrap_content"
+            android:textColorHint="@color/blue"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+
+            android:hint="TITLE OF INSPECTION" />
+        <EditText
+            android:id="@+id/questionInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/blue"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="200dp"
+            android:hint="TITLE OF INSPECTION" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addQuestionCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cutom_rounded_corners"
+                android:text="Add Question"
+                android:layout_marginRight="20dp"
+
+                />
+
+            <Button
+                android:id="@+id/submitQuestionsCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cutom_rounded_corners"
+                android:text="Submit Questions"
+
+
+                />
+        </LinearLayout>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

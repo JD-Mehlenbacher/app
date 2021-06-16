@@ -56,7 +56,7 @@ public class BuildingInspection extends Fragment {
         View rootView=inflater.inflate(R.layout.fragment_building_inspection3, container, false);
 
         values = new ArrayList<>(Arrays.asList(-1,-1,-1,-1,-1));
-        fields = new ArrayList<>(Arrays.asList("Smoke Alarm","HVAC","Lobby Cleanliness","Gym Cleanliness","Lights"));
+        fields = new ArrayList<>(Arrays.asList("Smoke Alarm","HVAC","Lobby Cleanliness","Lights","Gym Cleanliness"));
         commentList = new ArrayList<>(Arrays.asList("","","","",""));
 
         FieldText=(TextView) rootView.findViewById(R.id.firstRowTextBuilding);

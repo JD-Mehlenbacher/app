@@ -140,7 +140,7 @@ public class Login extends AppCompatActivity {
                         }
                         else{
                             errorStateHelper.usernameEmailErrorLogin = true;
-                            //System.out.println("doesnt exist");
+                            System.out.println("doesnt exist");
                         }
                     }
 
@@ -152,7 +152,7 @@ public class Login extends AppCompatActivity {
             }
             connect.close();
         } catch (Exception ex) {
-            System.out.println("ERROR");
+            System.out.println("Check Username/Email Error");
         }
     }
     public void checkPassword() {
@@ -212,7 +212,7 @@ public class Login extends AppCompatActivity {
             }
             connect.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Check Password Error");
         }
     }
 

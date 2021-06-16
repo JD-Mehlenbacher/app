@@ -19,12 +19,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.myapplication.Maintenance;
 import com.example.myapplication.R;
 import com.example.myapplication.UnitInspection;
+import com.example.myapplication.createInspection;
 import com.example.myapplication.databinding.FragmentDashboardBinding;
 import com.example.myapplication.errorStateHelper;
 
 public class DashboardFragment extends Fragment {
     private Button unitInspectionButton;
     private Button buildingInspectionButton;
+    private Button customInspectionButton;
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
 
@@ -56,7 +58,12 @@ public class DashboardFragment extends Fragment {
                 BuildingInspection();
             }
         });
-
+        customInspectionButton=(Button) root.findViewById(R.id.customInspectionButton);
+        customInspectionButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                customInspection();
+            }
+        });
         return root;
     }
 
@@ -64,6 +71,12 @@ public class DashboardFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void customInspection(){
+        errorStateHelper.buildingOrUnit=false;
+        Intent intent = new Intent(getActivity().getApplicationContext(), createInspection.class);
+        startActivity(intent);
     }
    public void unitInspection(){
        errorStateHelper.buildingOrUnit=false;

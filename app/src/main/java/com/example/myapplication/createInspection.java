@@ -11,7 +11,8 @@ public class createInspection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_inspection);
-        Button mybutton= new Button(this);
+        Button addQuestionButton=(Button) findViewById(R.id.addQuestionCreate);
+        //Button sub
 
     }
 }
