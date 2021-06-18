@@ -14,7 +14,7 @@ public class ConnectionHelper {
     @SuppressLint("NewApi")
 
     public Connection connectionClass(){
-        ip="192.168.10.86";
+        ip="192.168.10.167";
         database="PatryApp";
         uname="patry";
         pass="patry265";

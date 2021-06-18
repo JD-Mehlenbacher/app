@@ -34,6 +34,9 @@ public class errorStateHelper {
     public static boolean selectedBuildingInspectionError=false;
     public static boolean selectedTypeInspectionError=false;
 
+    public static String currentInspection = "";
+    public static String currentBuilding = "";
+
     public static void reset() {
         passwordErrorRegister = false;
         usernameExistsRegister = false;

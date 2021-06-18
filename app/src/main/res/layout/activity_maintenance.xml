@@ -2,36 +2,196 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:id="@+id/MaintenanceActivity"
     android:background="@drawable/settings_page"
     tools:context=".Maintenance">
 
-    <Button
-        android:id="@+id/MaintenanceBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:textColor="@color/blue"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/custom_rounded_corners_cream"
-        android:text="Back"
-        app:backgroundTint="@color/cream"
+    <TextView
+        android:id="@+id/inspectionNameMaintenance"
+        android:layout_width="222dp"
+        android:layout_height="89dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:text="Smoke Alarm"
+        android:textColor="@color/cream"
+        android:textSize="23dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/maintenanceFL"
-        android:layout_width="fill_parent"
-        android:layout_height="705dp"
+    <EditText
+        android:id="@+id/commentBuilding"
+        android:layout_width="355dp"
+        android:layout_height="163dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:gravity="center"
+        android:hint="COMMENTS"
+        android:textColor="@color/cream"
+        android:textColorHint="@color/cream"
+        app:layout_constraintBottom_toTopOf="@+id/BuildingNextMaint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableBuild">
+
+    </EditText>
+
+    <TableLayout
+        android:id="@+id/tableBuild"
+        android:layout_width="355dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/cutom_rounded_corners"
+        app:layout_constraintBottom_toTopOf="@+id/commentBuilding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="350px"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textColor="@color/cream"
+                android:textSize="20dp" />
+
+            <TextView
+
+                android:layout_width="365px"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="OK    "
+                android:textColor="@color/cream"
+                android:textSize="20dp" />
+
+            <TextView
+
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+
+                android:text="NOT OK    "
+                android:textColor="@color/cream"
+                android:textSize="20dp" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row1Building"
+            android:layout_width="389dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/firstRowTextBuilding"
+                android:layout_width="131dp"
+                android:layout_height="88dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="Smoke Alarm"
+                android:textColor="@color/cream"
+                android:textSize="20dp" />
+
+            <CheckBox
+                android:id="@+id/firstOkBuilding"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:buttonTint="@color/cream"
+                android:gravity="center" />
+
+            <CheckBox
+                android:id="@+id/firstNotOkBuilding"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="25dp"
+                android:buttonTint="@color/cream"
+                android:gravity="center" />
+
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/checkBoxErrorBuilding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="All Fields Must be Filled In Correctly"
+
+        android:textColor="#FF1744"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_max="1080dp"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/BuildingNextMaint" />
 
-    </FrameLayout>
+    <Button
+        android:id="@+id/BuildingNextMaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cutom_rounded_corners"
+
+        android:text="Next"
+        android:textColor="@color/cream"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxErrorBuilding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentBuilding" />
+
+    <Button
+        android:id="@+id/takePictureMaint"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cutom_rounded_corners"
+
+        android:text="Take Picture
+"
+        android:textColor="@color/cream"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxErrorBuilding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentBuilding" />
+
+    <Switch
+
+        android:id="@+id/wordOrderSwitchBuildingInspection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Requires Work Order?"
+        android:thumbTint="@color/blue"
+        android:trackTint="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/commentBuilding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableBuild" />
+
+    <ImageView
+        android:id="@+id/testImage"
+        android:layout_width="331dp"
+        android:layout_height="162dp"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxErrorBuilding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentBuilding"
+        app:layout_constraintVertical_bias="1.0"
+        tools:srcCompat="@tools:sample/avatars" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

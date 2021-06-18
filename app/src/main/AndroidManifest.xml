@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.hardware.camera"
+        android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -16,7 +18,6 @@
         <activity android:name=".SecurityQuestions" />
         <activity android:name=".EditProfile" />
         <activity android:name=".Maintenance" />
-        <activity android:name=".UnitInspection" />
         <activity
             android:name=".homePage"
             android:label="@string/title_activity_home_page" />
