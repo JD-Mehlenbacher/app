@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
     private Button customInspectionButton;
+    private Button createInspectionButton;
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
     private Spinner buildingDropdown;
@@ -74,6 +75,16 @@ public class DashboardFragment extends Fragment {
                 errorStateHelper.currentInspection = typeInputVar;
 
                 Intent intent= new Intent(getActivity(), com.example.myapplication.Maintenance.class);
+                startActivity(intent);
+
+            }
+        });
+        createInspectionButton=(Button) root.findViewById(R.id.createInspectionButton);
+        createInspectionButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+                Intent intent= new Intent(getActivity(), com.example.myapplication.createInspection.class);
                 startActivity(intent);
 
             }

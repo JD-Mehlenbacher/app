@@ -210,7 +210,7 @@ public class Maintenance extends AppCompatActivity {
 
                 if (rs.next()) {
                     id = rs.getInt(1) + 1;
-                    //System.out.println("ID IS: " + id);
+                    System.out.println("ID IS: " + id);
                 }
                 st.close();
             }
@@ -245,8 +245,11 @@ public class Maintenance extends AppCompatActivity {
             image.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
             byteImage = byteArrayOutputStream.toByteArray();
             encodedImage = android.util.Base64.encodeToString(byteImage, android.util.Base64.DEFAULT);
+
+
+            //decode to display
             byte[] decodeString = Base64.decode(encodedImage, Base64.DEFAULT);
-            decodebitmap = BitmapFactory.decodeByteArray(
+            Bitmap decodebitmap = BitmapFactory.decodeByteArray(
                     decodeString, 0, decodeString.length
             );
             test.setImageBitmap(decodebitmap);
@@ -291,7 +294,7 @@ public class Maintenance extends AppCompatActivity {
                         + questionNumber + ", " + answer + ", \'" + comments.getText().toString()
                         + "\', " + wordOrderInputVar + ", \'" + encodedImage + "\')");
 
-                decodebitmap = null;
+                encodedImage = null;
 
                 st.close();
 
