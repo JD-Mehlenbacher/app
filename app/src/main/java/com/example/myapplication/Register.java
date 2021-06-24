@@ -70,10 +70,7 @@ public class Register extends AppCompatActivity {
                 checkError();
             }
         });
-        buildings.add("SELECT");
-        buildings.add("Blackburn");
-        buildings.add("Armstrong");
-        buildings.add("Creekside");
+
         nameInput = (EditText) findViewById(R.id.nameInputRegisterPage);
         emailInput = (EditText) findViewById(R.id.emailInputRegisterPage);
         phoneInput = (EditText) findViewById(R.id.phoneInputChangeLogin);
@@ -86,6 +83,8 @@ public class Register extends AppCompatActivity {
         wrongPassword = (TextView) findViewById(R.id.passwordsDontMatchChangeLogin);
         duplicateField = (TextView) findViewById(R.id.duplicateFieldChangeLogin);
         emptyField = (TextView) findViewById(R.id.emptyFieldsChangeLogin);
+
+        getBuildings();
 
         addressDropdown=(Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(Register.this, android.R.layout.simple_spinner_item,buildings);
@@ -205,7 +204,31 @@ public class Register extends AppCompatActivity {
             errorStateHelper.blankFieldsRegister = false;
         }
     }
-        
+
+    public void getBuildings() {
+        try {
+            ConnectionHelper connectionHelper = new ConnectionHelper();
+            connect = connectionHelper.connectionClass();
+            if (connect != null) {
+                Statement st = connect.createStatement();
+
+                ResultSet rs = st.executeQuery("SELECT * FROM BuildingInfo");
+
+                while (rs.next()) {
+
+                    buildings.add(rs.getString("Building_Name"));
+                }
+                st.close();
+            }
+            else {
+                ConnectionResult = "Check Connection";
+            }
+            connect.close();
+        } catch (Exception ex) {
+            System.out.println("Get buildings error");
+        }
+    }
+
     public void checkDuplicates() {
         String duplicateMessage ="";
         try {

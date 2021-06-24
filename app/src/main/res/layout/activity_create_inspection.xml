@@ -27,10 +27,9 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateInspectionBack"
 
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
         <EditText
@@ -39,7 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
 
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="60dp"
             android:hint="TITLE OF INSPECTION"
 
             android:textColorHint="@color/blue" />
@@ -47,9 +47,9 @@
         <Spinner
             android:id="@+id/createInspectionChooseBuilding"
             android:layout_width="210dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
 
@@ -58,10 +58,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="200dp"
+
+            android:layout_marginBottom="100dp"
             android:hint="QUESTION INPUT"
             android:textColorHint="@color/blue" />
+
+
+        <TextView
+            android:id="@+id/incorrectInputCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="80dp"
+            android:gravity="center"
+            android:textColor="#FF1744"
+
+
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,9 +86,9 @@
                 android:id="@+id/addQuestionCreateInspection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/cutom_rounded_corners"
                 android:text="Add Question"
-                android:layout_marginRight="20dp"
 
                 />
 
@@ -89,6 +102,7 @@
 
                 />
         </LinearLayout>
+
     </LinearLayout>
 
 

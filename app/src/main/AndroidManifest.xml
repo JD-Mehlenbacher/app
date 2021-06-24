@@ -4,8 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.hardware.camera"
-        android:required="false"/>
+    <uses-permission
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".createInspection"></activity>
+        <activity android:name=".DeleteInspection"></activity>
+        <activity android:name=".createInspection" />
         <activity android:name=".SecurityQuestions" />
         <activity android:name=".EditProfile" />
         <activity android:name=".Maintenance" />

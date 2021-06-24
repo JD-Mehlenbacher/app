@@ -292,7 +292,8 @@ public class Maintenance extends AppCompatActivity {
                 st.executeUpdate("INSERT INTO BuildingInspectionAnswers VALUES (" + id + ", \'"
                         + currentUser.userName + "\', \'" + formatter.format(date) + "\', "
                         + questionNumber + ", " + answer + ", \'" + comments.getText().toString()
-                        + "\', " + wordOrderInputVar + ", \'" + encodedImage + "\')");
+                        + "\', " + wordOrderInputVar + ", \'" + encodedImage + "\', \'"
+                        + errorStateHelper.currentBuilding + "\', \'" + errorStateHelper.currentInspection + "\')");
 
                 encodedImage = null;
 

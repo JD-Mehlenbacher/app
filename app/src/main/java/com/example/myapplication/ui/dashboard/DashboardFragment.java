@@ -68,7 +68,7 @@ public class DashboardFragment extends Fragment {
         types= new ArrayList<>();
 
 
-        customInspectionButton=(Button) root.findViewById(R.id.startInspectionButton);
+        customInspectionButton=(Button) root.findViewById(R.id.deleteInspectionButton);
         customInspectionButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 errorStateHelper.currentBuilding = buildingInputVar;
@@ -79,7 +79,7 @@ public class DashboardFragment extends Fragment {
 
             }
         });
-        createInspectionButton=(Button) root.findViewById(R.id.createInspectionButton);
+        createInspectionButton=(Button) root.findViewById(R.id.confirmInspectionDelete);
         createInspectionButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -93,7 +93,7 @@ public class DashboardFragment extends Fragment {
         buildingInputVar = buildings.get(0);
 
 
-        buildingDropdown=(Spinner) root.findViewById(R.id.buildingDropDownInspection);
+        buildingDropdown=(Spinner) root.findViewById(R.id.buildingDropDownDelete);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, buildings);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         buildingDropdown.setAdapter(adapter);
@@ -113,7 +113,7 @@ public class DashboardFragment extends Fragment {
         });
         getInspections();
 
-        typeDropdown=(Spinner) root.findViewById(R.id.typeDropDownInspection);
+        typeDropdown=(Spinner) root.findViewById(R.id.typeDropDownDelete);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, types);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //typeDropdown.setVisibility(View.INVISIBLE);
