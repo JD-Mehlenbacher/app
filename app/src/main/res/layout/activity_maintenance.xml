@@ -43,10 +43,10 @@
 
     <TableLayout
         android:id="@+id/tableBuild"
-        android:layout_width="357dp"
-        android:layout_height="151dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginLeft="37dp"
+        android:layout_width="365dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
         android:layout_marginTop="100dp"
         android:background="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/commentBuilding"
@@ -61,7 +61,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="350px"
+                android:layout_width="166dp"
                 android:layout_height="match_parent"
                 android:text=""
                 android:textColor="@color/cream"
@@ -90,12 +90,13 @@
 
         <TableRow
             android:id="@+id/row1Building"
-            android:layout_width="346dp"
-            android:layout_height="119dp">
+            android:layout_width="354dp"
+            android:layout_height="119dp"
+            android:layout_marginHorizontal="10dp">
 
             <TextView
                 android:id="@+id/firstRowTextBuilding"
-                android:layout_width="164dp"
+                android:layout_width="185dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
